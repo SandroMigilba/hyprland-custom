@@ -4,96 +4,115 @@
     font-size: 14px;
 }
 
-/* --- BINGKAI SCREEN RAKSASA (Nyambung ke seluruh sisi) --- */
 window#waybar {
-    background-color: #000000; /* Warna bingkai hitam */
-    
-    /* Bingkai atas (bagian utama waybar) */
-    border-top: 10px solid #000000;
-    
-    /* Trik Box Shadow untuk membuat bingkai di KIRI, KANAN, dan BAWAH layar */
-    /* Shadow ini akan menyimulasikan garis hitam 10px di sisi lain monitor */
-    box-shadow: 
-        -10px 0 0 0 #000000,   /* Bingkai Kiri */
-        10px 0 0 0 #000000,    /* Bingkai Kanan */
-        0 1080px 0 10px #000000; /* Bingkai Bawah (sesuaikan 1080 dengan tinggi monitor) */
-
-    /* Memberikan lengkungan pada sudut layar atas */
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-    
-    /* Padding agar modul tidak menempel ke garis hitam */
-    padding: 2px 10px;
+    background: transparent;
 }
 
-/* --- SECTION WORKSPACES (Dot Sempurna) --- */
+/* --- SECTION WORKSPACES --- */
+
 #workspaces {
     background-color: rgba(28, 34, 56, 0.787); 
     border-radius: 20px;
-    margin: 4px;
-    padding: 0px 6px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 0 4px;
+    padding: 0px;
+    border: 3px solid transparent;
 }
 
 #workspaces button {
-    color: transparent;
-    background-color: rgba(255, 255, 255, 0.3);
-    min-width: 12px;
-    min-height: 12px;
-    font-size: 0px; 
-    padding: 0;
-    margin: 8px 5px;
-    border-radius: 100px;
-    transition: all 0.3s ease;
+    padding: 4px 10px;
+    border-radius: 20px;
+    color: #ffffff;
+    /* transition: all 0.4s cubic-bezier(.65, -0.6, .24, 1.5); */
+    transition: 0.2s;
+    border: none;
+    box-shadow: none;
+    outline: none;
 }
 
 #workspaces button.active {
-    background-color: #8be9fd;
-    min-width: 25px;
-    box-shadow: 0px 0px 8px rgba(139, 233, 253, 0.6);
+    color: #8be9fd;
+    font-weight: bold;
+    /* padding-left: 20px; */
+    /* padding-right: 20px; */
+    padding: 0 15px;
+    background: rgba(139, 233, 253, 0.1);
+    text-shadow: 0px 0px 8px rgba(139, 233, 253, 0.5);
 }
 
-/* --- SECTION GROUP APPS --- */
+#workspaces button:hover {
+    color: #8be9fd;
+    background: transparent;
+}
+
+/* --- SECTION GROUP APPS (SATU JELLY) --- */
+
 #apps {
     background-color: rgba(45, 55, 88, 0.787);
-    border: 2px solid rgba(28, 34, 56, 0.787);
+    border: 3px solid rgba(28, 34, 56, 0.787);
     border-radius: 20px;
     padding: 0px 10px;
-    margin: 4px 5px;
+    margin: 0 5px;
 }
 
+/* Styling icon di dalam grup agar tidak ada kotak terpisah */
 #custom-browser, #custom-terminal, #custom-files, #custom-editor, #custom-spotify {
     background: transparent;
+    border: none;
+    margin: 0;
     padding: 2px 8px;
     color: #ffffff;
+    /* transition: all 0.3s cubic-bezier(.65, -0.6, .24, 1.5); */
     transition: 0.2s;
 }
 
-#custom-browser:hover, #custom-terminal:hover, #custom-files:hover {
+#custom-browser:hover, #custom-terminal:hover, #custom-files:hover, #custom-editor:hover, #custom-spotify:hover {
     color: #8be9fd;
-    font-size: 18px; /* Disesuaikan agar tidak merusak tinggi bar */
+    font-size: 22px; /* Efek membesar halus */
 }
 
 /* --- SECTION MODUL LAIN (Clock, Battery, dll) --- */
-#window, #clock, #bluetooth, #network, #backlight, #pulseaudio, #battery, #custom-close {
+
+#window, #clock, #bluetooth, #network, #backlight, #pulseaudio, #battery, #custom-close, #apps {
     background-color: rgba(45, 55, 88, 0.787);
-    border: 2px solid rgba(28, 34, 56, 0.787);
+    border: 3px solid rgba(28, 34, 56, 0.787);
     color: #ffffff;
     border-radius: 20px;
     padding: 2px 15px;
-    margin: 4px 5px;
+    margin: 0 5px;
+    /* transition: all 0.3s cubic-bezier(.65, -0.6, .24, 1.5); */
     transition: 0.05s;
 }
 
-/* Efek Hover Modul */
-#clock:hover, #pulseaudio:hover, #network:hover, #battery:hover {
-    background-color: rgba(60, 70, 110, 0.9);
-    border: 2px solid #8be9fd;
+#window:hover, #clock:hover, #bluetooth:hover, #network:hover, #backlight:hover, #pulseaudio:hover, #battery:hover, #custom-close:hover, #apps:hover {
+    padding: 2px 25px;
 }
 
-/* Tombol Close */
+#window {
+    /* font-style: italic; */
+}
+
+/* Indikator Baterai Kritis */
+#battery.critical {
+    color: #ff5555;
+    border: 3px solid #ff5555;
+}
+
+/* Warna khusus saat bluetooth terhubung */
+#bluetooth.connected {
+    color: #8be9fd;
+}
+
+#bluetooth.disabled {
+    background-color: rgba(86, 14, 14, 0.28);
+    color: #ff5555;
+}
+
+/* Tombol Close dengan warna merah khas */
 #custom-close {
-    border: 2px solid rgba(194, 91, 0, 0.651);
+    /* background-color: rgba(255, 85, 85, 0.45); 
+    color: rgba(28, 34, 56, 0.787);  */
+    border: 3px solid rgba(194, 91, 0, 0.651);
+
     background-color: rgba(86, 14, 14, 0.28);
     color: #ff5555;
 }
@@ -101,4 +120,61 @@ window#waybar {
 #custom-close:hover {
     background-color: #ff5555;
     color: #ffffff;
+    padding-left: 18px;
+    padding-right: 18px;
+    font-weight: bold;
+    box-shadow: 0px 0px 10px rgba(255, 85, 85, 0.5);
 }
+
+
+
+
+/* ##### */
+
+
+
+
+/* --- SECTION WORKSPACES (Dot Sempurna) --- */
+
+#workspaces {
+    background-color: rgba(28, 34, 56, 0.787); 
+    border-radius: 20px;
+    margin: 0 4px;
+    padding: 0px 6px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#workspaces button {
+    color: transparent;
+    background-color: rgba(255, 255, 255, 0.3);
+    
+    /* Ukuran dot yang tidak aktif */
+    min-width: 16px;
+    min-height: 12px;
+    
+    /* Penting: Set font-size ke 0 agar angka tidak mendorong ukuran button */
+    font-size: 0px; 
+    
+    padding: 0;
+    margin: 8px 5px; /* Sesuaikan angka 8px ini untuk mengatur tinggi bar */
+    border-radius: 100px; /* Nilai besar agar ujung selalu bulat */
+    transition: all 0.3s cubic-bezier(.4, 0, .2, 1);
+    border: none;
+}
+
+#workspaces button.active {
+    background-color: #8be9fd;
+    
+    /* Ukuran tepat 2x lipat dari dot biasa */
+    min-width: 6px; 
+    min-height: 12px;
+    
+    border-radius: 100px;
+    box-shadow: 0px 0px 8px rgba(139, 233, 253, 0.6);
+}
+
+#workspaces button:hover {
+    background-color: rgba(139, 233, 253, 0.5);
+    /* Jangan ubah ukuran saat hover agar tidak goyang */
+}
+
