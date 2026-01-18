@@ -1,0 +1,104 @@
+* {
+    border: none;
+    font-family: "JetBrainsMono Nerd Font", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+}
+
+/* --- BINGKAI SCREEN RAKSASA (Nyambung ke seluruh sisi) --- */
+window#waybar {
+    background-color: #000000; /* Warna bingkai hitam */
+    
+    /* Bingkai atas (bagian utama waybar) */
+    border-top: 10px solid #000000;
+    
+    /* Trik Box Shadow untuk membuat bingkai di KIRI, KANAN, dan BAWAH layar */
+    /* Shadow ini akan menyimulasikan garis hitam 10px di sisi lain monitor */
+    box-shadow: 
+        -10px 0 0 0 #000000,   /* Bingkai Kiri */
+        10px 0 0 0 #000000,    /* Bingkai Kanan */
+        0 1080px 0 10px #000000; /* Bingkai Bawah (sesuaikan 1080 dengan tinggi monitor) */
+
+    /* Memberikan lengkungan pada sudut layar atas */
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    
+    /* Padding agar modul tidak menempel ke garis hitam */
+    padding: 2px 10px;
+}
+
+/* --- SECTION WORKSPACES (Dot Sempurna) --- */
+#workspaces {
+    background-color: rgba(28, 34, 56, 0.787); 
+    border-radius: 20px;
+    margin: 4px;
+    padding: 0px 6px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#workspaces button {
+    color: transparent;
+    background-color: rgba(255, 255, 255, 0.3);
+    min-width: 12px;
+    min-height: 12px;
+    font-size: 0px; 
+    padding: 0;
+    margin: 8px 5px;
+    border-radius: 100px;
+    transition: all 0.3s ease;
+}
+
+#workspaces button.active {
+    background-color: #8be9fd;
+    min-width: 25px;
+    box-shadow: 0px 0px 8px rgba(139, 233, 253, 0.6);
+}
+
+/* --- SECTION GROUP APPS --- */
+#apps {
+    background-color: rgba(45, 55, 88, 0.787);
+    border: 2px solid rgba(28, 34, 56, 0.787);
+    border-radius: 20px;
+    padding: 0px 10px;
+    margin: 4px 5px;
+}
+
+#custom-browser, #custom-terminal, #custom-files, #custom-editor, #custom-spotify {
+    background: transparent;
+    padding: 2px 8px;
+    color: #ffffff;
+    transition: 0.2s;
+}
+
+#custom-browser:hover, #custom-terminal:hover, #custom-files:hover {
+    color: #8be9fd;
+    font-size: 18px; /* Disesuaikan agar tidak merusak tinggi bar */
+}
+
+/* --- SECTION MODUL LAIN (Clock, Battery, dll) --- */
+#window, #clock, #bluetooth, #network, #backlight, #pulseaudio, #battery, #custom-close {
+    background-color: rgba(45, 55, 88, 0.787);
+    border: 2px solid rgba(28, 34, 56, 0.787);
+    color: #ffffff;
+    border-radius: 20px;
+    padding: 2px 15px;
+    margin: 4px 5px;
+    transition: 0.05s;
+}
+
+/* Efek Hover Modul */
+#clock:hover, #pulseaudio:hover, #network:hover, #battery:hover {
+    background-color: rgba(60, 70, 110, 0.9);
+    border: 2px solid #8be9fd;
+}
+
+/* Tombol Close */
+#custom-close {
+    border: 2px solid rgba(194, 91, 0, 0.651);
+    background-color: rgba(86, 14, 14, 0.28);
+    color: #ff5555;
+}
+
+#custom-close:hover {
+    background-color: #ff5555;
+    color: #ffffff;
+}
